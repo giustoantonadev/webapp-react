@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../api/api";
 import ReviewList from '../components/ReviewList';
+import ReviewForm from "../components/ReviewForm";
 
 export default function MovieDetail() {
     const { id } = useParams();
@@ -34,6 +35,11 @@ export default function MovieDetail() {
                 />
 
             )}
+
+            <ReviewForm
+                movieId={movie.id}
+                onReviewAdded={(newReview) => setReviews([...reviews, newReview])}
+            />
 
             <h3>Recensioni</h3>
             {reviews.length > 0 ? (
