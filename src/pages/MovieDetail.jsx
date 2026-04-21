@@ -21,32 +21,64 @@ export default function MovieDetail() {
     if (!movie) return <p>Caricamento...</p>
 
     return (
-        <>
-            <h2>{movie.title}</h2>
-            <p><strong>Anno:</strong>{movie.year}</p>
-            <p><strong>Regista:</strong>{movie.director}</p>
+    <div className="container py-4">
 
-            {movie.poster && (
-                <img
-                    src={`http://localhost:3000${movie.poster}`}
-                    alt={movie.title}
-                    className="img-fluid mb-3"
-                    style={{ maxWidth: '300px' }}
-                />
+        <div 
+            className="card shadow-sm p-4"
+            style={{ 
+                backgroundColor: "#111",
+                color: "white",
+                border: "none",
+                borderRadius: "12px"
+            }}
+        >
+            <div className="row g-4">
 
-            )}
+                {/* Poster */}
+                <div className="col-md-4 d-flex justify-content-center">
+                    {movie.poster && (
+                        <img
+                            src={`http://localhost:3000${movie.poster}`}
+                            alt={movie.title}
+                            className="img-fluid rounded"
+                            style={{
+                                maxHeight: "450px",
+                                objectFit: "contain",
+                                backgroundColor: "#000",
+                                padding: "10px",
+                                borderRadius: "12px"
+                            }}
+                        />
+                    )}
+                </div>
 
-            <ReviewForm
-                movieId={movie.id}
-                onReviewAdded={(newReview) => setReviews([...reviews, newReview])}
-            />
+                {/* Info film */}
+                <div className="col-md-8">
+                    <h2 className="mb-3">{movie.title}</h2>
 
-            <h3>Recensioni</h3>
-            {reviews.length > 0 ? (
-                <ReviewList reviews={reviews} />
-            ) : (
-                <p>Nessuna recensione disponibile</p>
-            )}
-        </>
-    )
+                    <p><strong>Anno:</strong> {movie.year}</p>
+                    <p><strong>Regista:</strong> {movie.director}</p>
+
+                    <hr className="border-secondary" />
+
+                    <h3 className="mt-4">Recensioni</h3>
+                    {reviews.length > 0 ? (
+                        <ReviewList reviews={reviews} />
+                    ) : (
+                        <p className="text-light">Nessuna recensione disponibile</p>
+                    )}
+
+                    <h3 className="mt-4">Aggiungi una recensione</h3>
+                    <ReviewForm
+                        movieId={movie.id}
+                        onReviewAdded={(newReview) => setReviews([...reviews, newReview])}
+                    />
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+);
+
 }

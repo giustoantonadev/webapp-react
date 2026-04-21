@@ -2,24 +2,52 @@ import { Link } from 'react-router-dom';
 
 export default function MovieCard({ movie }) {
     return (
-        <div className='card mb-3' style={{ width: "18rem" }}>
-
+        <div
+            className="card h-100 shadow-sm"
+            style={{
+                border: "none",
+                borderRadius: "12px",
+                backgroundColor: "#111",
+                color: "white"
+            }}
+        >
             {movie.poster && (
-                <img
-                    src={`http://localhost:3000${movie.poster}`}
-                    alt={movie.title}
-                    className="card-img-top"
-                />
+                <div
+                    style={{
+                        width: "100%",
+                        height: "350px",
+                        backgroundColor: "#000",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        borderTopLeftRadius: "12px",
+                        borderTopRightRadius: "12px",
+                        overflow: "hidden"
+                    }}
+                >
+                    <img
+                        src={`http://localhost:3000${movie.poster}`}
+                        alt={movie.title}
+                        style={{
+                            maxHeight: "100%",
+                            maxWidth: "100%",
+                            objectFit: "contain"
+                        }}
+                    />
+                </div>
             )}
 
-            <div className='card-body'>
-                <h5 className='card-title'>{movie.title}</h5>
-                <p className='card-text'>Anno: {movie.year}</p>
+            <div className="card-body d-flex flex-column text-center">
+                <h5 className="card-title mb-3">{movie.title}</h5>
 
-                <Link to={`/movies/${movie.id}`} className='btn btn-primary'>
+                <a
+                    href={`/movies/${movie.id}`}
+                    className="btn btn-outline-light mt-auto"
+                    style={{ borderRadius: "8px" }}
+                >
                     Dettagli
-                </Link>
+                </a>
             </div>
         </div>
-    )
+    );
 }

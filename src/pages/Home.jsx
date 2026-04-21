@@ -14,10 +14,15 @@ export default function Home() {
             .catch(err => console.error("Errore caricamento film:", err));
 
     }, [])
+
     return (
-        <>
-            <h2>Lista Film</h2>
-            <MovieList movies={movies} />
-        </>
-    )
+        <div className="container py-4">
+            <h2 className="mb-4">Lista Film</h2>
+
+            <div className="row row-cols-1 row-cols-md-3 g-4">
+                <MovieList movies={movies} />
+            </div>
+        </div>
+    );
+
 }
