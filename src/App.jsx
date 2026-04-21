@@ -1,10 +1,19 @@
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Layout from './components/Layout';
+import Home from './pages/Home';
+import MovieDetail from './pages/MovieDetail'
 
-function App() { 
+function App() {
 
   return (
-    <>
-     <h1>Movies App</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path='/' element={<Home />} />
+          <Route path='/movies/:id' element={<MovieDetail />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
