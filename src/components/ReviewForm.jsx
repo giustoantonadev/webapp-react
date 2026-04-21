@@ -21,34 +21,81 @@ export default function ReviewForm({ movieId, onReviewAdded }) {
                 setRating(5);
                 setContent('');
             })
-                .catch(err => console.error('Errore invio recensione:', err))
+            .catch(err => console.error('Errore invio recensione:', err))
     }
     return (
-        <form onSubmit={handleSubmit} className="mb-4">
-            <h4>Aggiungi una recensione</h4>
-            <div>
-                <label>Utente</label>
-                <input value={author} onChange={e => setAuthor(e.target.value)} className="form-control" />
-            </div>
+        <div
+            className="card p-4 mt-4"
+            style={{
+                backgroundColor: "#1a1a1a",
+                color: "white",
+                border: "1px solid #333",
+                borderRadius: "12px"
+            }}
+        >
+            <h4 className="mb-3">Aggiungi una recensione</h4>
 
-            <div className="mb-2">
-                <label>Voto (1-5)</label>
-                <input
-                    onChange={e => setRating(e.target.value)}
-                    type="number"
-                    className="form-control"
-                    min='1'
-                    max='5'
-                    value={rating}
-                />
-            </div>
+            <form onSubmit={handleSubmit}>
 
-            <div>
-                <label>Commento</label>
-                <textarea onChange={e => setContent(e.target.value)} value={content} className="form-control" />
-            </div>
+                {/* Autore */}
+                <div className="mb-3">
+                    <label className="form-label">Utente</label>
+                    <input
+                        value={author}
+                        onChange={e => setAuthor(e.target.value)}
+                        className="form-control"
+                        style={{
+                            backgroundColor: "#111",
+                            color: "white",
+                            border: "1px solid #444"
+                        }}
+                    />
+                </div>
 
-            <button className="btn btn-success">Invia</button>
-        </form>
-    )
+                {/* Voto */}
+                <div className="mb-3">
+                    <label className="form-label">Voto (1-5)</label>
+                    <input
+                        type="number"
+                        min="1"
+                        max="5"
+                        value={rating}
+                        onChange={e => setRating(e.target.value)}
+                        className="form-control"
+                        style={{
+                            backgroundColor: "#111",
+                            color: "white",
+                            border: "1px solid #444"
+                        }}
+                    />
+                </div>
+
+                {/* Commento */}
+                <div className="mb-3">
+                    <label className="form-label">Commento</label>
+                    <textarea
+                        value={content}
+                        onChange={e => setContent(e.target.value)}
+                        className="form-control"
+                        rows="4"
+                        style={{
+                            backgroundColor: "#111",
+                            color: "white",
+                            border: "1px solid #444"
+                        }}
+                    ></textarea>
+                </div>
+
+                {/* Bottone */}
+                <button
+                    className="btn btn-primary w-100"
+                    style={{ borderRadius: "8px" }}
+                >
+                    Invia
+                </button>
+
+            </form>
+        </div>
+    );
+
 }
