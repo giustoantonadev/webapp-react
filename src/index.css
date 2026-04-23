@@ -8,16 +8,15 @@ body {
 }
 
 .card {
-    background-color: #1a1a1a !important;
-    border: 1px solid #333 !important;
-    color: white !important;
+    transition: transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1), 
+                box-shadow 0.35s ease;
 }
 
 .card:hover {
     transform: scale(1.03);
-    transition: 0.2s ease-in-out;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
+
 
 .overlay-eye {
     position: absolute;

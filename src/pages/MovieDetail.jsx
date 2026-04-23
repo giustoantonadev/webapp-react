@@ -71,6 +71,11 @@ export default function MovieDetail() {
 
                         <hr className="border-secondary" />
 
+                        <ReviewForm
+                            movieId={movie.id}
+                            onReviewAdded={(newReview) => setReviews([...reviews, newReview])}
+                        />
+                        
                         <h3 className="mt-4">Recensioni</h3>
                         {reviews.length > 0 ? (
                             <ReviewList reviews={reviews} />
@@ -78,11 +83,7 @@ export default function MovieDetail() {
                             <p className="text-light">Nessuna recensione disponibile</p>
                         )}
 
-                        <h3 className="mt-4">Aggiungi una recensione</h3>
-                        <ReviewForm
-                            movieId={movie.id}
-                            onReviewAdded={(newReview) => setReviews([...reviews, newReview])}
-                        />
+
                     </div>
 
                 </div>
