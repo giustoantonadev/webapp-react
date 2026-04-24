@@ -13,11 +13,12 @@ export default function MovieDetail() {
     useEffect(() => {
         api.get(`/movies/${id}`)
             .then(res => {
-                setMovie(res.data);      // il film è direttamente in res.data
-                setReviews([]);          // per ora niente recensioni
+                setMovie(res.data.movie);
+                setReviews(res.data.reviews);
             })
             .catch(err => console.log('Errore caricamento film:', err))
     }, [id]);
+
 
     if (!movie) return <p>Caricamento...</p>
 
