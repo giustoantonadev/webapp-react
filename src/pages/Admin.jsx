@@ -14,6 +14,13 @@ export default function Admin() {
         <div className="container py-4">
             <h1 className="mb-4">Admin – Elenco Film</h1>
 
+            {/* 🔹 BOTTONE AGGIUNGI FILM */}
+            <div className="d-flex justify-content-end mb-3">
+                <a href="/admin/add" className="btn btn-primary">
+                    + Aggiungi Film
+                </a>
+            </div>
+
             <div className="table-responsive">
                 <table className="table table-dark table-striped table-bordered align-middle">
                     <thead>

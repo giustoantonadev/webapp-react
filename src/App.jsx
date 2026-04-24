@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import MovieDetail from './pages/MovieDetail';
 import Navbar from "./components/Navbar";
 import Admin from "./pages/Admin";
+import AddMovie from "./pages/AddMovie";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path='/movies/:id' element={<MovieDetail />} />
         </Route>
         <Route path="/admin" element={<Admin />} />
+        <Route path="/admin/add" element={<AddMovie />} />
       </Routes>
 
     </BrowserRouter>

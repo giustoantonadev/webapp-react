@@ -13,8 +13,8 @@ export default function MovieDetail() {
     useEffect(() => {
         api.get(`/movies/${id}`)
             .then(res => {
-                setMovie(res.data.movie);
-                setReviews(res.data.reviews);
+                setMovie(res.data);      // il film è direttamente in res.data
+                setReviews([]);          // per ora niente recensioni
             })
             .catch(err => console.log('Errore caricamento film:', err))
     }, [id]);
@@ -75,7 +75,7 @@ export default function MovieDetail() {
                             movieId={movie.id}
                             onReviewAdded={(newReview) => setReviews([...reviews, newReview])}
                         />
-                        
+
                         <h3 className="mt-4">Recensioni</h3>
                         {reviews.length > 0 ? (
                             <ReviewList reviews={reviews} />
